@@ -4,6 +4,7 @@ import Listing from "../../components/Listing/Listing";
 import Footer from '../../components/Footer/Footer';
 import Baner from  '../../components/Baner/Baner';
 import Navigation from '../../components/Navigation/Navigation'
+import Shipments from '../../components/shipments/shipments'
 
 class Home extends Component {
 
@@ -16,19 +17,21 @@ class Home extends Component {
                 {/*header*/}
 
                 {/*section for navigations*/}
-                <Navigation />
+                {/*<Navigation />*/}
 
 
                 {/*section for banner*/}
-                <Baner />
+                {/*<Baner />*/}
 
                 {/*section for main content*/}
                 {/*Listing of lists main content in container*/}
-                <Listing/>
+                {/*<Listing/>*/}
 
 
                 {/*footer of the web*/}
-                <Footer/>
+                {/*<Footer/>*/}
+
+                <Shipments/>
 
             </div>
         );
