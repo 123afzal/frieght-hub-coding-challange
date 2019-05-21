@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button, Card, CardBody, CardSubtitle, CardText, CardTitle} from "reactstrap";
+import './Item.scss';
 
 export default class Item extends React.Component {
     constructor(props) {
@@ -12,7 +13,7 @@ export default class Item extends React.Component {
         let {id, name, cell} = this.props.shipment;
         console.log(this.props);
         return (
-            <Card>
+            <Card className="shipment-card">
                 <CardBody>
                     <CardTitle>Card title</CardTitle>
                     <CardSubtitle>Card subtitle</CardSubtitle>

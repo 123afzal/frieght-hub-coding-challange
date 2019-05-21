@@ -1,6 +1,7 @@
 import React from 'react';
 import Item from './Item/Item'
 import {Container, Row, Col} from "reactstrap";
+import './Shipments.scss'
 
 export default class Shipments extends React.Component {
 
@@ -21,6 +22,21 @@ export default class Shipments extends React.Component {
                 id: 3,
                 name: 'a',
                 cell: '019'
+            },
+            {
+                id: 5,
+                name: 'a',
+                cell: '019'
+            },
+            {
+                id: 9,
+                name: 'a',
+                cell: '019'
+            },
+            {
+                id: 8,
+                name: 'a',
+                cell: '019'
             }
         ];
         this.state = {
@@ -30,7 +46,7 @@ export default class Shipments extends React.Component {
 
     render() {
         return (
-            <Container>
+            <Container className="shipments">
                 <Row>
                     {
                         this.state.data.length > 0 ?
