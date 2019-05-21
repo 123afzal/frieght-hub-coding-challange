@@ -29,7 +29,7 @@ export const getShipments = () => (dispatch) => {
                 reject(error);
             });
     });
-}
+};
 
 export const updatePage = (skip) => (dispatch) => {
     dispatch({
@@ -37,4 +37,4 @@ export const updatePage = (skip) => (dispatch) => {
         data: skip
     });
     return Promise.resolve(true);
-}
+};

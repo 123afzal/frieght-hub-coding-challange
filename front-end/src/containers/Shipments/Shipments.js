@@ -33,19 +33,25 @@ class Shipments extends React.Component {
     
     componentWillMount = () => {
         this.props.actions.getShipments();
-    }
+    };
 
     updatePage = (page) => {
         let skip = page * 20;
         this.props.actions.updatePage(skip);
+    };
 
-    }
+    _renderOptions = (sortingFields) => {
+        return sortingFields.map((field,index) => {
+            return <option key={index}>{field}</option>
+        })
+    };
 
 
     render() {
         const { shipments, limit, count, skip } = this.props,
             totalPages = Math.ceil(count / limit),
             data = shipments.length > limit ? shipments.slice(skip, (skip + limit)) : shipments;
+        let sortingFields = ["name","type","mode","status","userId"];
         return (
             <Container className="shipments">
                 <div className="filter-shipments">
@@ -53,12 +59,11 @@ class Shipments extends React.Component {
                         <Col xl="3" lg="4" md="6" sm="6" xs="12">
                             <FormGroup>
                                 <Label for="exampleSelect">Order Shipments By : </Label>
-                                <Input type="select" name="select" id="exampleSelect" onChange={this._orderShipments}>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                <Input type="select" name="select" onChange={this._orderShipments} defaultValue="default">
+                                    <option disabled value="default">Default</option>
+                                    {
+                                        this._renderOptions(sortingFields)
+                                    }
                                 </Input>
                             </FormGroup>
                         </Col>
@@ -102,7 +107,7 @@ const mapStateToProps = (state) => {
         skip: state.shipments.skip,
         limit: state.shipments.limit,
     };
-}
+};
 
 /* Map Actions to Props */
 const mapDispatchToProps = (dispatch) => {
@@ -112,7 +117,7 @@ const mapDispatchToProps = (dispatch) => {
             updatePage
         }, dispatch)
     };
-}
+};
 
 /* Connect Component with Redux */
 export default connect(mapStateToProps, mapDispatchToProps)(Shipments);

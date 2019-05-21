@@ -20,7 +20,6 @@ class Home extends Component {
                 <Navigation/>
 
                 {/*section for main shipments*/}
-                {/*<Shipments/>*/}
                 {
                     this.props.children
                 }
