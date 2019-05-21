@@ -8,18 +8,13 @@ class Footer extends Component {
             <div className="footer">
                 <div className="container">
                     <div className="footer-social">
-                        <Link to="#"><i className="fa fa-facebook-square"></i></Link>
-                        <Link to="#"><i className="fa fa-twitter-square"></i></Link>
-                        <Link to="#"><i className="fa fa-linkedin"></i></Link>
-                        <Link to="#"><i className="fa fa-youtube-square"></i></Link>
-                    </div>
-                    <div className="footer-navigation">
-                        <Link to="#">Terms & Conditions</Link> | <Link to="#">Privacy Policy</Link> | <Link
-                        to="#">Disclaimer</Link> | <Link to="#">About us</Link> | <Link to="#">Contact us</Link>
+                        <Link to="https://www.facebook.com/"><i className="fa fa-facebook-square"></i></Link>
+                        <Link to="https://www.twitter.com"><i className="fa fa-twitter-square"></i></Link>
+                        <Link to="https://www.linkedin.com"><i className="fa fa-linkedin"></i></Link>
+                        <Link to="https://www.youtube.com"><i className="fa fa-youtube-square"></i></Link>
                     </div>
                     <div className="footer-copyright">
-                        © 2009 - 2018 TFC International Ltd. All Rights Reserved. Registered trademarks and
-                        Copyrights are the property of their respective owners.
+                        © 2019 Designed & Developed by Syed Afzal Hasan
                     </div>
                 </div>
             </div>
