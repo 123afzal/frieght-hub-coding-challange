@@ -1,59 +1,55 @@
 import React from 'react';
 import Item from './Item/Item'
-import {Container, Row, Col} from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import './Shipments.scss'
 
-export default class Shipments extends React.Component {
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getShipments, updatePage } from '../../actions';
+
+import Pagination from '../Pagination';
+
+class Shipments extends React.Component {
 
     constructor(props) {
         super(props);
-        let data = [
-            {
-                id: 1,
-                name: 'a',
-                cell: '019'
-            },
-            {
-                id: 2,
-                name: 'a',
-                cell: '019'
-            },
-            {
-                id: 3,
-                name: 'a',
-                cell: '019'
-            },
-            {
-                id: 5,
-                name: 'a',
-                cell: '019'
-            },
-            {
-                id: 9,
-                name: 'a',
-                cell: '019'
-            },
-            {
-                id: 8,
-                name: 'a',
-                cell: '019'
-            }
-        ];
+
         this.state = {
-            data: data
-        }
+            skip: 0
+        };
+    }
+
+    componentWillMount = () => {
+        this.props.actions.getShipments();
+    }
+
+    updatePage = (page) => {
+        let skip = page * 20;
+        this.props.actions.updatePage(skip);
+
     }
 
     render() {
+        const { shipments, limit, count, skip } = this.props,
+            totalPages = Math.ceil(count / limit),
+            data = shipments.length > limit ? shipments.slice(skip, (skip + limit)) : shipments;
+
         return (
             <Container className="shipments">
                 <Row>
+                    <Pagination
+                        totalElements={count}
+                        totalPages={totalPages}
+                        getRequest={this.updatePage}
+                    />
+                </Row>
+                <Row>
                     {
-                        this.state.data.length > 0 ?
-                            this.state.data.map((shipment, index) => {
+                        data.length > 0 ?
+                            data.map((shipment, index) => {
                                 return (<Col xl="3" lg="4" md="6" sm="6" xs="12" key={index}>
                                     {
-                                        <Item shipment={shipment} key={index}/>
+                                        <Item shipment={shipment} key={index} />
                                     }
                                 </Col>);
                             })
@@ -65,3 +61,30 @@ export default class Shipments extends React.Component {
         );
     }
 }
+
+
+/* Map state to props */
+const mapStateToProps = (state) => {
+    let shipments = [
+        ...state.shipments.data,
+    ];
+    return {
+        shipments,
+        count: shipments.length,
+        skip: state.shipments.skip,
+        limit: state.shipments.limit,
+    };
+}
+
+/* Map Actions to Props */
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators({
+            getShipments,
+            updatePage
+        }, dispatch)
+    };
+}
+
+/* Connect Component with Redux */
+export default connect(mapStateToProps, mapDispatchToProps)(Shipments);

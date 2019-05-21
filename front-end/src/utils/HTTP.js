@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Config from '../constants/config';
+import config from '../constants/config';
 
 
 
