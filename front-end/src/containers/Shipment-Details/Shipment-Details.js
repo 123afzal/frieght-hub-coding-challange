@@ -1,7 +1,7 @@
 import React from 'react';
 import './Shipment-Details.scss'
 
-export default class ShipmentsDetails extends React.Component {
+export default class ShipmentDetails extends React.Component {
 
     constructor(props) {
         super(props);
