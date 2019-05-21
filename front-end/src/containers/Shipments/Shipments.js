@@ -1,24 +1,36 @@
 import React from 'react';
 import Item from './Item/Item'
 import { Container, Row, Col } from "reactstrap";
-import './Shipments.scss'
+import { FormGroup, Label, Input } from 'reactstrap';
+import './Shipments.scss';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getShipments, updatePage } from '../../actions';
 
-import Pagination from '../Pagination';
+import Pagination from '../../components/Pagination';
 
 class Shipments extends React.Component {
 
-    constructor(props) {
-        super(props);
+    _orderShipments = (e) => {
+        let newdata = this.state.data.sort(this._sort(e.target.value));
+        this.setState({
+            data: newdata
+        })
+    };
 
-        this.state = {
-            skip: 0
-        };
-    }
-
+    _sort = (property) => {
+        let sortOrder = 1;
+        if (property[0] === "-") {
+            sortOrder = -1;
+            property = property.substr(1);
+        }
+        return function (a, b) {
+            let result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+            return result * sortOrder;
+        }
+    };
+    
     componentWillMount = () => {
         this.props.actions.getShipments();
     }
@@ -29,13 +41,29 @@ class Shipments extends React.Component {
 
     }
 
+
     render() {
         const { shipments, limit, count, skip } = this.props,
             totalPages = Math.ceil(count / limit),
             data = shipments.length > limit ? shipments.slice(skip, (skip + limit)) : shipments;
-
         return (
             <Container className="shipments">
+                <div className="filter-shipments">
+                    <Row>
+                        <Col xl="3" lg="4" md="6" sm="6" xs="12">
+                            <FormGroup>
+                                <Label for="exampleSelect">Order Shipments By : </Label>
+                                <Input type="select" name="select" id="exampleSelect" onChange={this._orderShipments}>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </Input>
+                            </FormGroup>
+                        </Col>
+                    </Row>
+                </div>
                 <Row>
                     <Pagination
                         totalElements={count}
@@ -43,6 +71,7 @@ class Shipments extends React.Component {
                         getRequest={this.updatePage}
                     />
                 </Row>
+
                 <Row>
                     {
                         data.length > 0 ?
@@ -61,7 +90,6 @@ class Shipments extends React.Component {
         );
     }
 }
-
 
 /* Map state to props */
 const mapStateToProps = (state) => {
