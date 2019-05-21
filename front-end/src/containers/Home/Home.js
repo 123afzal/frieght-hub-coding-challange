@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './Home.css';
 import Footer from '../../components/Footer/Footer';
 import Navigation from '../../components/Navigation/Navigation'
+import Shipments from '../../components/shipments/shipments'
+import Assistance from '../../components/Assistance/Assistance'
 
 class Home extends Component {
 
@@ -14,19 +16,11 @@ class Home extends Component {
                 {/*header*/}
                 <Navigation />
 
-                {/*section for main content*/}
-                <div>
-                    <div className="clearfix"></div>
+                {/*section for main shipments*/}
+                <Shipments/>
 
-                    <div className="listing">
-                        <div className="container">
-                            <div className="need-help">
-                                <i className="fa fa-question-circle"></i>
-                                Need help? Please Contact Us, we are always happy to assist!
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {/*section for assistance*/}
+                <Assistance/>
 
                 {/*footer of the web*/}
                 <Footer/>
