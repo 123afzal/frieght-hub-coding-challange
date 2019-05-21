@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Home.css';
 import Footer from '../../components/Footer/Footer';
 import Navigation from '../../components/Navigation/Navigation'
-import Shipments from '../../components/shipments/shipments'
+import Shipments from '../../components/Shipments/Shipments'
 import Assistance from '../../components/Assistance/Assistance'
 
 class Home extends Component {
