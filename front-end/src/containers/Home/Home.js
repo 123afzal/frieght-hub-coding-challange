@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import './Home.css';
-import Listing from "../../components/Listing/Listing";
 import Footer from '../../components/Footer/Footer';
-import Baner from  '../../components/Baner/Baner';
 import Navigation from '../../components/Navigation/Navigation'
-import Shipments from '../../components/shipments/shipments'
+import Shipments from '../../components/Shipments/Shipments'
+import Assistance from '../../components/Assistance/Assistance'
 
 class Home extends Component {
 
@@ -15,23 +14,16 @@ class Home extends Component {
             <div className="home">
 
                 {/*header*/}
+                <Navigation />
 
-                {/*section for navigations*/}
-                {/*<Navigation />*/}
+                {/*section for main shipments*/}
+                <Shipments/>
 
-
-                {/*section for banner*/}
-                {/*<Baner />*/}
-
-                {/*section for main content*/}
-                {/*Listing of lists main content in container*/}
-                {/*<Listing/>*/}
-
+                {/*section for assistance*/}
+                <Assistance/>
 
                 {/*footer of the web*/}
-                {/*<Footer/>*/}
-
-                <Shipments/>
+                <Footer/>
 
             </div>
         );
