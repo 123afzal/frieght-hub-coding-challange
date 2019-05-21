@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, Card, CardBody, CardSubtitle, CardText, CardTitle } from "reactstrap";
+import {Button, Card, CardBody, CardSubtitle, CardText, CardTitle} from "reactstrap";
 import './Item.scss';
+import { browserHistory } from 'react-router';
 
 export default class Item extends React.Component {
     constructor(props) {
@@ -10,14 +11,14 @@ export default class Item extends React.Component {
 
 
     render() {
-        let { id, name, type, mode, origin, destination } = this.props.shipment;
+        let {id, name, type, mode, origin, destination} = this.props.shipment;
         return (
             <Card className="shipment-card">
                 <CardBody>
                     <CardTitle>{name}</CardTitle>
                     <CardSubtitle>{type} - {mode}</CardSubtitle>
                     <CardText>{origin} - {destination}</CardText>
-                    <Button>View Details</Button>
+                    <Button onClick={()=>{browserHistory.push(`details/${id}`)}}>View Details</Button>
                 </CardBody>
             </Card>
         );
