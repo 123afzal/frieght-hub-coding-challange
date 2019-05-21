@@ -1,0 +1,22 @@
+/* Theme Colors */
+.footer {
+  background: #2e2c2a;
+  padding: 20px 0px;
+  color: #fff;
+  text-align: center; }
+  .footer a {
+    color: #fff;
+    font-size: 18px;
+    margin: 10px 5px; }
+    .footer a:hover {
+      color: #fff; }
+  .footer .footer-social {
+    padding: 15px 0px; }
+    .footer .footer-social a {
+      font-size: 24px;
+      text-decoration: none; }
+      .footer .footer-social a:hover {
+        color: #ff6600; }
+  .footer .footer-copyright {
+    padding: 15px 0px;
+    font-size: 14px; }

@@ -1,0 +1,31 @@
+/* Theme Colors */
+@import "../../styles/common/color.scss";
+
+.footer {
+  background: $lightBlack;
+  padding: 20px 0px;
+  color: #fff;
+  text-align: center;
+  a {
+    color: #fff;
+    font-size: 18px;
+    margin: 10px 5px;
+    &:hover {
+      color: #fff;
+    }
+  }
+  .footer-social {
+    padding: 15px 0px;
+    a {
+      font-size: 24px;
+      text-decoration: none;
+      &:hover {
+        color: $orange;
+      }
+    }
+  }
+  .footer-copyright {
+    padding: 15px 0px;
+    font-size: 14px;
+  }
+}

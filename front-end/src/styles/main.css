@@ -1,0 +1,12 @@
+/* Theme Colors */
+/* Global Style */
+@import url(https://www.fonts.com/font/microsoft-corporation/tahoma?QueryFontType=Web&src=GoogleWebFonts);
+body {
+  background: #f2f2ed;
+  font-family: 'tahoma'; }
+
+.cursor-pointer {
+  cursor: pointer; }
+
+.float-left {
+  float: left; }
