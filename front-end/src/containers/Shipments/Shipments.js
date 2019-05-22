@@ -2,7 +2,7 @@ import React from 'react';
 import Item from './Item/Item'
 import { Container, Row, Col } from "reactstrap";
 import { FormGroup, Label, Input } from 'reactstrap';
-import './Shipments.scss';
+import './Shipments.css';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -72,15 +72,13 @@ class Shipments extends React.Component {
 
                 <Row>
                     {
-                        data.length > 0 ?
-                            data.map((shipment, index) => {
-                                return (<Col xl="3" lg="4" md="6" sm="6" xs="12" key={index}>
-                                    {
-                                        <Item shipment={shipment} key={index} />
-                                    }
-                                </Col>);
-                            })
-                            : null
+                        data.length > 0 ? <Col xl="12" lg="12" md="6" sm="6" xs="12" className="shipment-table">
+                                {
+                                    <Item shipments={data}/>
+                                }</Col>
+                            : <div className="text-center">
+                                <p>No Shipments to show</p>
+                            </div>
                     }
                 </Row>
             </Container>

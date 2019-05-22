@@ -1,3 +1,13 @@
-.shipment-card{
+@import "../../../styles/common/color.scss";
 
+
+.shipment{
+  tr{
+    th{
+      color: $orange;
+    }
+  }
+  .orange-color{
+    color: $orange;
+  }
 }

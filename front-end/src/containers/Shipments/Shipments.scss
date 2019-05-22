@@ -1,6 +1,12 @@
+@import "../../styles/common/color.scss";
+
 .shipments {
   padding: 60px 18px;
   .col-12 {
     padding: 12px;
+  }
+  .shipment-table{
+    background-color: $white;
+    border: 1px solid;
   }
 }

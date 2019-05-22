@@ -1,7 +1,9 @@
 /* Theme Colors */
 .home .after-header-sec {
-  background: #ff6600;
-  height: 60px; }
+  color: #ff6600;
+  height: 60px;
+  background-color: #363636;
+  text-align: center; }
 
 .home .nav-bg {
   background-color: #f2f2f2; }
