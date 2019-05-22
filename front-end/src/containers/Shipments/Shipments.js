@@ -46,6 +46,12 @@ class Shipments extends React.Component {
         this.props.actions.getSearchData(this.state.searchId);
     };
 
+    _handleResetData = () => {
+      this.setState({
+          searchId: ''
+      });
+        this.props.actions.getShipments();
+    };
 
     render() {
         const { shipments, limit, count, skip } = this.props,
@@ -82,6 +88,7 @@ class Shipments extends React.Component {
                         </Col>
 
                         <Col xl="4" lg="4" md="6" sm="6" xs="12">
+                            <Button className="orange-color cursor-pointer margin-t-30" onClick={this._handleResetData}>Reset</Button>
                             <Pagination
                                 totalElements={count}
                                 totalPages={totalPages}
