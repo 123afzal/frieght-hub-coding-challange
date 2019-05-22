@@ -16,7 +16,7 @@ export default class Item extends React.Component {
             <Card className="shipment-card">
                 <CardBody>
                     <CardTitle>{name}</CardTitle>
-                    <CardSubtitle>{type} - {mode}</CardSubtitle>
+                    <CardSubtitle>{type}</CardSubtitle>
                     <CardText>{origin} - {destination}</CardText>
                     <Button onClick={()=>{browserHistory.push(`details/${id}`)}}>View Details</Button>
                 </CardBody>

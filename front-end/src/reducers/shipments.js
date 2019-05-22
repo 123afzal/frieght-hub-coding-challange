@@ -2,8 +2,10 @@ import {
     GET_SHIPMENTS_REQUEST,
     GET_SHIPMENTS_SUCCESS,
     GET_SHIPMENTS_FAILED,
-    UPDATE_SHIPMENTS_PAGE
+    UPDATE_SHIPMENTS_PAGE,
+    ORDER_BY_SHIPMENTS
 } from '../constants/actionTypes';
+import {_sort} from '../utils/dataManipulation'
 
 const initialState = {
     data: [],
@@ -47,6 +49,12 @@ const shipment_reducer = (state = initialState, action) => {
                 {
                     skip: action.data
                 }
+            );
+        case ORDER_BY_SHIPMENTS:
+            return Object.assign(
+                {},
+                state,
+                {data: state.data.sort(_sort(action.data))}
             );
         default:
             return state;

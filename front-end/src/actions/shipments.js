@@ -4,7 +4,8 @@ import {
     GET_SHIPMENTS_REQUEST,
     GET_SHIPMENTS_SUCCESS,
     GET_SHIPMENTS_FAILED,
-    UPDATE_SHIPMENTS_PAGE
+    UPDATE_SHIPMENTS_PAGE,
+    ORDER_BY_SHIPMENTS
 } from './../constants/actionTypes';
 
 
@@ -37,4 +38,11 @@ export const updatePage = (skip) => (dispatch) => {
         data: skip
     });
     return Promise.resolve(true);
+};
+
+export const orderShipmentsBy = (value) => (dispatch) => {
+    dispatch({
+        type: ORDER_BY_SHIPMENTS,
+        data: value
+    })
 };

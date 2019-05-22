@@ -6,31 +6,17 @@ import './Shipments.scss';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getShipments, updatePage } from '../../actions';
+import { getShipments, updatePage,orderShipmentsBy } from '../../actions';
 
 import Pagination from '../../components/Pagination';
 
 class Shipments extends React.Component {
 
     _orderShipments = (e) => {
-        let newdata = this.state.data.sort(this._sort(e.target.value));
-        this.setState({
-            data: newdata
-        })
+        let value = e.target.value;
+        this.props.actions.orderShipmentsBy(value);
     };
 
-    _sort = (property) => {
-        let sortOrder = 1;
-        if (property[0] === "-") {
-            sortOrder = -1;
-            property = property.substr(1);
-        }
-        return function (a, b) {
-            let result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
-            return result * sortOrder;
-        }
-    };
-    
     componentWillMount = () => {
         this.props.actions.getShipments();
     };
@@ -56,9 +42,9 @@ class Shipments extends React.Component {
             <Container className="shipments">
                 <div className="filter-shipments">
                     <Row>
-                        <Col xl="3" lg="4" md="6" sm="6" xs="12">
+                        <Col xl="4" lg="4" md="6" sm="6" xs="12">
                             <FormGroup>
-                                <Label for="exampleSelect">Order Shipments By : </Label>
+                                <Label for="orderByShipments">Order Shipments By : </Label>
                                 <Input type="select" name="select" onChange={this._orderShipments} defaultValue="default">
                                     <option disabled value="default">Default</option>
                                     {
@@ -67,15 +53,22 @@ class Shipments extends React.Component {
                                 </Input>
                             </FormGroup>
                         </Col>
+
+                        <Col xl="4" lg="4" md="6" sm="6" xs="12">
+                            <FormGroup>
+                                <Label for="searchShipments">Search : </Label>
+                            </FormGroup>
+                        </Col>
+
+                        <Col xl="4" lg="4" md="6" sm="6" xs="12">
+                            <Pagination
+                                totalElements={count}
+                                totalPages={totalPages}
+                                getRequest={this.updatePage}
+                            />
+                        </Col>
                     </Row>
                 </div>
-                <Row>
-                    <Pagination
-                        totalElements={count}
-                        totalPages={totalPages}
-                        getRequest={this.updatePage}
-                    />
-                </Row>
 
                 <Row>
                     {
@@ -114,7 +107,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         actions: bindActionCreators({
             getShipments,
-            updatePage
+            updatePage,
+            orderShipmentsBy
         }, dispatch)
     };
 };
