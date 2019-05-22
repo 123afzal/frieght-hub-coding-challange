@@ -57,7 +57,7 @@ class Shipments extends React.Component {
         const { shipments, limit, count, skip } = this.props,
             totalPages = Math.ceil(count / limit),
             data = shipments.length > limit ? shipments.slice(skip, (skip + limit)) : shipments;
-        let sortingFields = ["name","type","mode","status","userId"];
+        let sortingFields = ["name","status","id"];
         return (
             <Container className="shipments">
                 <div className="filter-shipments">

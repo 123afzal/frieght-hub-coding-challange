@@ -1,9 +1,12 @@
 import React from 'react';
 import { Table} from "reactstrap";
 import './Item.css';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {browserHistory} from 'react-router';
+import {getSearchData} from "../../../actions";
 
-export default class Item extends React.Component {
+class Item extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -13,15 +16,17 @@ export default class Item extends React.Component {
         return (<tr key={i}>
             <td>{shipment.id}</td>
             <td>{shipment.name}</td>
-            <td>{shipment.type}</td>
-            <td>{shipment.origin}</td>
-            <td>{shipment.destination}</td>
             <td>{shipment.status}</td>
-            <td className="cursor-pointer white-color" onClick={()=>{browserHistory.push(`details/${shipment.id}`)}}>
+            <td className="cursor-pointer white-color" onClick={()=>this._showShipmentDetails(`details/${shipment.id}`, shipment.id)}>
                 <i className="fa fa-edit orange-color"></i>
             </td>
         </tr>)
     }
+
+    _showShipmentDetails = (route, id) => {
+        this.props.actions.getSearchData(id);
+        browserHistory.push(route)
+    };
 
     render() {
         return (
@@ -30,9 +35,6 @@ export default class Item extends React.Component {
                 <tr>
                     <th>#</th>
                     <th>Shipment Name</th>
-                    <th>Type</th>
-                    <th>Origin</th>
-                    <th>Destination</th>
                     <th>Status</th>
                     <th>Edit</th>
                 </tr>
@@ -48,3 +50,25 @@ export default class Item extends React.Component {
         );
     }
 }
+
+/* Map state to props */
+const mapStateToProps = (state) => {
+    let shipments = [
+        ...state.shipments.data,
+    ];
+    return {
+        shipments,
+    };
+};
+
+/* Map Actions to Props */
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators({
+            getSearchData
+        }, dispatch)
+    };
+};
+
+/* Connect Component with Redux */
+export default connect(mapStateToProps, mapDispatchToProps)(Item);
