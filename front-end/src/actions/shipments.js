@@ -5,7 +5,10 @@ import {
     GET_SHIPMENTS_SUCCESS,
     GET_SHIPMENTS_FAILED,
     UPDATE_SHIPMENTS_PAGE,
-    ORDER_BY_SHIPMENTS
+    ORDER_BY_SHIPMENTS,
+    GET_SEARCH_DATA_REQUEST,
+    GET_SEARCH_DATA_SUCCESS,
+    GET_SEARCH_DATA_FAILED
 } from './../constants/actionTypes';
 
 
@@ -44,5 +47,28 @@ export const orderShipmentsBy = (value) => (dispatch) => {
     dispatch({
         type: ORDER_BY_SHIPMENTS,
         data: value
+    })
+};
+
+export const getSearchData = (value) => (dispatch) => {
+    dispatch({
+        type: GET_SEARCH_DATA_REQUEST
+    });
+    return new Promise((resolve, reject) => {
+        HTTP('get', '/shipments',null,null,{id:value})
+            .then((response) => {
+                dispatch({
+                    type: GET_SEARCH_DATA_SUCCESS,
+                    data: response.data
+                });
+                resolve(response.data);
+            })
+            .catch(error => {
+                dispatch({
+                    type: GET_SEARCH_DATA_FAILED,
+                    error: error
+                });
+                reject(error);
+            });
     })
 };

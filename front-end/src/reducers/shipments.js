@@ -3,7 +3,10 @@ import {
     GET_SHIPMENTS_SUCCESS,
     GET_SHIPMENTS_FAILED,
     UPDATE_SHIPMENTS_PAGE,
-    ORDER_BY_SHIPMENTS
+    ORDER_BY_SHIPMENTS,
+    GET_SEARCH_DATA_REQUEST,
+    GET_SEARCH_DATA_SUCCESS,
+    GET_SEARCH_DATA_FAILED
 } from '../constants/actionTypes';
 import {_sort} from '../utils/dataManipulation'
 
@@ -55,6 +58,32 @@ const shipment_reducer = (state = initialState, action) => {
                 {},
                 state,
                 {data: state.data.sort(_sort(action.data))}
+            );
+        case GET_SEARCH_DATA_REQUEST:
+            return Object.assign(
+                {},
+                state,
+                {
+                    isLoading: true
+                }
+            );
+        case GET_SEARCH_DATA_SUCCESS:
+            return Object.assign(
+                {},
+                state,
+                {
+                    isLoading: false,
+                    data: [...action.data]
+                }
+            );
+        case GET_SEARCH_DATA_FAILED:
+            return Object.assign(
+                {},
+                state,
+                {
+                    isLoading: false,
+                    data: [],
+                }
             );
         default:
             return state;

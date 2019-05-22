@@ -6,11 +6,16 @@ import './Shipments.css';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getShipments, updatePage,orderShipmentsBy } from '../../actions';
+import { getShipments, updatePage,orderShipmentsBy, getSearchData } from '../../actions';
 
 import Pagination from '../../components/Pagination';
 
 class Shipments extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.state={searchId: ''};
+    }
 
     _orderShipments = (e) => {
         let value = e.target.value;
@@ -30,6 +35,15 @@ class Shipments extends React.Component {
         return sortingFields.map((field,index) => {
             return <option key={index}>{field}</option>
         })
+    };
+
+    _handleSearchChange =(e) => {
+        console.log(this.state.searchId);
+        this.setState({searchId: e.target.value})
+    };
+
+    _handleSearchData = () => {
+        this.props.actions.getSearchData(this.state.searchId);
     };
 
 
@@ -58,8 +72,11 @@ class Shipments extends React.Component {
                             <FormGroup>
                                 <Label for="searchShipments">Search : </Label>
                                 <div className="dis-flex">
-                                    <Input type="id" name="shipmentd" id="shipmentd" placeholder="Search by shipment id" onKeyPress={this._handleKeyPressShipmentSearch}/>
-                                    <Button className="orange-color cursor-pointer margin-l-20">Search</Button>
+                                    <Input type="text"
+                                           value={this.state.searchId}
+                                           placeholder="Search by shipment id"
+                                           onChange={this._handleSearchChange}/>
+                                    <Button className="orange-color cursor-pointer margin-l-20" onClick={this._handleSearchData}>Search</Button>
                                 </div>
                             </FormGroup>
                         </Col>
@@ -110,7 +127,8 @@ const mapDispatchToProps = (dispatch) => {
         actions: bindActionCreators({
             getShipments,
             updatePage,
-            orderShipmentsBy
+            orderShipmentsBy,
+            getSearchData
         }, dispatch)
     };
 };
