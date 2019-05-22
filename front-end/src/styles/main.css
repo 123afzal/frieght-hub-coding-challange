@@ -10,3 +10,12 @@ body {
 
 .float-left {
   float: left; }
+
+.orange-color {
+  background-color: #ff6600 !important; }
+
+.white-color {
+  color: #ffffff !important; }
+
+.margin-l-20 {
+  margin-left: 20px; }

@@ -1,7 +1,7 @@
 import React from 'react';
 import Item from './Item/Item'
 import { Container, Row, Col } from "reactstrap";
-import { FormGroup, Label, Input } from 'reactstrap';
+import { FormGroup, Label, Input, Button } from 'reactstrap';
 import './Shipments.css';
 
 import { connect } from 'react-redux';
@@ -57,7 +57,10 @@ class Shipments extends React.Component {
                         <Col xl="4" lg="4" md="6" sm="6" xs="12">
                             <FormGroup>
                                 <Label for="searchShipments">Search : </Label>
-                                <Input type="id" name="shipmentd" id="shipmentd" placeholder="Search by shipment id" />
+                                <div className="dis-flex">
+                                    <Input type="id" name="shipmentd" id="shipmentd" placeholder="Search by shipment id" onKeyPress={this._handleKeyPressShipmentSearch}/>
+                                    <Button className="orange-color cursor-pointer margin-l-20">Search</Button>
+                                </div>
                             </FormGroup>
                         </Col>
 

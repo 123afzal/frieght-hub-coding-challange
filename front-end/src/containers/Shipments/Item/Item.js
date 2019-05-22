@@ -9,15 +9,15 @@ export default class Item extends React.Component {
         this.state = {};
     }
 
-    _renderShipmentData(shipment){
-        return (<tr>
+    _renderShipmentData(shipment,i){
+        return (<tr key={i}>
             <td>{shipment.id}</td>
             <td>{shipment.name}</td>
             <td>{shipment.type}</td>
             <td>{shipment.origin}</td>
             <td>{shipment.destination}</td>
             <td>{shipment.status}</td>
-            <td className="cursor-pointer" onClick={()=>{browserHistory.push(`details/${shipment.id}`)}}>
+            <td className="cursor-pointer white-color" onClick={()=>{browserHistory.push(`details/${shipment.id}`)}}>
                 <i className="fa fa-edit orange-color"></i>
             </td>
         </tr>)
@@ -39,8 +39,8 @@ export default class Item extends React.Component {
                 </thead>
                 <tbody>
                 {
-                    this.props.shipments.map((shipment) => {
-                        return this._renderShipmentData(shipment);
+                    this.props.shipments.map((shipment, i) => {
+                        return this._renderShipmentData(shipment, i);
                     })
                 }
                 </tbody>

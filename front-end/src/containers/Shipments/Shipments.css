@@ -5,3 +5,5 @@
   .shipments .shipment-table {
     background-color: #ffffff;
     border: 1px solid; }
+  .shipments .dis-flex {
+    display: flex; }
