@@ -57,6 +57,7 @@ class Shipments extends React.Component {
                         <Col xl="4" lg="4" md="6" sm="6" xs="12">
                             <FormGroup>
                                 <Label for="searchShipments">Search : </Label>
+                                <Input type="id" name="shipmentd" id="shipmentd" placeholder="Search by shipment id" />
                             </FormGroup>
                         </Col>
 

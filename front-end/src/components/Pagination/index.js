@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import './pagination.css';
 
 export default class Pagination extends React.Component {
   constructor(props) {
@@ -74,7 +74,7 @@ export default class Pagination extends React.Component {
           <li key="a">
             <a style={{ cursor: "pointer" }}
               onClick={this.getPrev}
-              type="submit" className="btn btn-primary"
+              type="submit" className="btn btn-primary color-orange-yellow"
             >
               Previous
       </a>
@@ -84,7 +84,7 @@ export default class Pagination extends React.Component {
           <li key="z">
             <a style={{ cursor: "pointer" }}
               onClick={this.getNext}
-              type="submit" className="btn btn-primary"
+              type="submit" className="btn btn-primary color-orange-yellow"
             >
               Next
       </a>

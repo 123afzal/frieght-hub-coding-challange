@@ -1,0 +1,43 @@
+/* Theme Colors */
+@import "../../styles/common/color.scss";
+
+.pagination {
+  display: inline-block;
+  float: right;
+  margin: 28px 0 0 0;
+  border-radius: 5px;
+  a {
+    color: $lightBlack;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    &.active {
+      background-color: $orange;
+      color: white;
+      border: 1px solid $orange;
+    }
+    &:hover:not(.active) {
+      background-color: $lightGrey;
+    }
+    &:first-child {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    &:last-child {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+  }
+  .color-orange-yellow{
+    background-color: $orangeYellow !important;
+  }
+}
+
+.user-container {
+  margin: 10px;
+}
+
+.text-center {
+  text-align: center !important;
+}
